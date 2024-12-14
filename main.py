@@ -1,4 +1,3 @@
-
 import telebot
 from controllers import save_password_in_db, get_password_in_db, delete_password2, list_sites
 
@@ -84,7 +83,7 @@ def display_sites(message):
 @bot.message_handler(content_types=['text'])
 def handle_text_message(message):
     if '🔗Сохранить пароль 🔗' in message.text:
-        bot.send_message(message.chat.id, 'Введите название сайта, пароль и ссылкуна него (через пробел):')
+        bot.send_message(message.chat.id, 'Введите название сайта(пробел), пароль(пробел) и ссылку на него:\nЕсли не хотите вводить ссылку, просто введите что-то другое)')
         bot.register_next_step_handler(message, save_password_in_db, bot=bot, k=keyboard)
     elif '📓Взять пароль📓' in message.text:
         bot.send_message(message.chat.id, 'Вот ваши сохраненные пароли:')
